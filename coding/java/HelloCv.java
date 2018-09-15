@@ -40,9 +40,11 @@ public class HelloCv {
         //convert to greyscale
         //Mat mat = imread("images/cobh.jpg", Imgcodecs.IMREAD_GRAYSCALE);
         Mat mat = imread("images/cobh.jpg");
+        Mat submat = mat.submat(100,100,100,100);
+        out.println(submat);
         out.println(mat);
         out.println("mat = " + mat.width() + " x " + mat.height() + " , " + mat.type());
         MatOfInt moi = new MatOfInt(Imgcodecs.CV_IMWRITE_PNG_COMPRESSION, 9);
-        imwrite("images/output.png", mat, moi);
+        imwrite("images/output.png", submat);
     }
 }
