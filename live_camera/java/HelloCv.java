@@ -6,6 +6,7 @@ import java.awt.image.*;
 import javax.swing.*;
 import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.Videoio;
+import org.opencv.imgproc.Imgproc;
 
 public class HelloCv {
 
@@ -26,6 +27,11 @@ public class HelloCv {
         Mat frame = new Mat();
         while(true){
             if(camera.read(frame)){
+                // b/w cartoon effect 
+                //Imgproc.cvtColor(frame,frame, Imgproc.COLOR_RGB2GRAY);
+                //Mat target = new Mat();
+                //Imgproc.Canny(frame, target, 100.0, 150.0, 3,true);
+                //t.mat = target;
                 t.mat = frame;
                 t.repaint();
             }
