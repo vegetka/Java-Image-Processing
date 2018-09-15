@@ -3,6 +3,7 @@ import org.opencv.core.Mat;
 import static java.lang.System.loadLibrary;
 import static java.lang.System.out;
 import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.core.MatOfInt;
 
 import static org.opencv.core.CvType.CV_8UC1;
 import static org.opencv.core.CvType.CV_8UC3;
@@ -36,8 +37,12 @@ public class HelloCv {
         out.println("mat5 = ");
         out.println(mat5.dump());
 
-        Mat mat = imread("images/cobh.jpg", Imgcodecs.IMREAD_GRAYSCALE);
+        //convert to greyscale
+        //Mat mat = imread("images/cobh.jpg", Imgcodecs.IMREAD_GRAYSCALE);
+        Mat mat = imread("images/cobh.jpg");
+        out.println(mat);
         out.println("mat = " + mat.width() + " x " + mat.height() + " , " + mat.type());
-        imwrite("images/output.jpg", mat);
+        MatOfInt moi = new MatOfInt(Imgcodecs.CV_IMWRITE_PNG_COMPRESSION, 9);
+        imwrite("images/output.png", mat, moi);
     }
 }
